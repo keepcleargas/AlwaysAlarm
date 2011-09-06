@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, AlwaysAlarmActivity!</string>
+    <string name="app_name">AlwaysAlarm</string>
+    <string name="addAlarm">Add Alarm</string>
+    <string name="settings">Settings</string>
+    <string name="currentAlarms">Current Alarms</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="setup_alarm">Setup Alarm</string>
+    <string name="meters">Meters</string>
+    <string name="feet">Feet</string>
+    <string name="cancel">Cancel</string>
+    <string name="tone_summary">Select Alarm Tone</string>
+    <string name="tone_title">Pick Alarm Tone</string>
+    <string name="unit_title">Pick Units</string>
+    <string name="unit_summary">Choose which units AlwaysAlarm uses.</string>
+    <string name="alarm_ringing_title">Time to get up!</string>
+    <string name="alarm_ringing_message">Distance until alarm turns off</string>
+    <string name="monday_short">MON</string>
+    <string name="tuesday_short">TUE</string>
+    <string name="wednesday_short">WED</string>
+    <string name="thursday_short">THU</string>
+    <string name="friday_short">FRI</string>
+    <string name="saturday_short">SAT</string>
+    <string name="sunday_short">SUN</string>
+    <string name="steps">Steps</string>
+</resources>

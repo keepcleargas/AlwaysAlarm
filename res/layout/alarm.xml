@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:gravity="center"
+	android:orientation="vertical">
+
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="wrap_content" android:layout_height="wrap_content">
+		<ToggleButton android:text="ToggleButton" android:id="@+id/toggleButton1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:background="@drawable/on_off">
+		</ToggleButton>
+
+		<TextView android:text="TextView" android:id="@+id/textView1"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_marginLeft="20px" android:layout_marginRight="20px"
+			android:layout_marginTop="3dp" android:layout_marginBottom="3dp">
+		</TextView>
+		<ImageButton android:src="@drawable/preferences"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:id="@+id/imageButton2" android:background="@android:color/transparent">
+		</ImageButton>
+	</LinearLayout>
+
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+		<TextView android:id="@+id/view_monday" android:textSize="10dp" android:layout_marginRight="3dp"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/monday_short"></TextView>
+		<TextView android:id="@+id/view_tuesday" android:textSize="10dp" android:layout_marginRight="3dp"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/tuesday_short"></TextView>
+		<TextView android:id="@+id/view_wednesday" android:textSize="10dp" android:layout_marginRight="3dp"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/wednesday_short"></TextView>
+		<TextView android:id="@+id/view_thursday" android:textSize="10dp" android:layout_marginRight="3dp"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/thursday_short"></TextView>
+		<TextView android:id="@+id/view_friday" android:textSize="10dp" android:layout_marginRight="3dp"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/friday_short"></TextView>
+		<TextView android:id="@+id/view_saturday" android:textSize="10dp" android:layout_marginRight="3dp"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/saturday_short"></TextView>
+		<TextView android:id="@+id/view_sunday" android:textSize="10dp" android:layout_marginRight="3dp"
+			android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/sunday_short"></TextView>
+	</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/scroll" android:layout_width="fill_parent"
+	android:layout_below="@+id/textView1" android:layout_centerVertical="true"
+	android:gravity="center" android:layout_height="wrap_content"
+	android:background="@drawable/striprepeat">
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent">
+		<TextView android:id="@+id/textView2" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge"
+			android:text="@string/setup_alarm" android:layout_gravity="center"
+			android:layout_marginBottom="10dp"></TextView>
+		<TimePicker android:id="@+id/timePicker1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_gravity="center"></TimePicker>
+		<LinearLayout android:id="@+id/linearLayout1"
+			android:layout_height="wrap_content" android:layout_width="fill_parent">
+			<TextView android:id="@+id/textView1" android:layout_height="wrap_content"
+				android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_marginRight="5dp"
+				android:layout_marginLeft="3dp" android:text="@string/steps">
+			</TextView>
+			<EditText android:layout_height="wrap_content" android:id="@+id/editText1"
+				android:layout_width="wrap_content" android:layout_weight="1"
+				android:inputType="number"
+				android:layout_marginRight="5dp">
+				<requestFocus></requestFocus>
+			</EditText>
+		</LinearLayout>
+		<CheckBox android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/checkBox1"
+			android:text="@string/monday"></CheckBox>
+		<CheckBox android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/checkBox2"
+			android:text="@string/tuesday"></CheckBox>
+		<CheckBox android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/checkBox3"
+			android:text="@string/wednesday"></CheckBox>
+		<CheckBox android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/checkBox4"
+			android:text="@string/thursday"></CheckBox>
+		<CheckBox android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/checkBox5"
+			android:text="@string/friday"></CheckBox>
+		<CheckBox android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/checkBox6"
+			android:text="@string/saturday"></CheckBox>
+		<CheckBox android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:id="@+id/checkBox7"
+			android:text="@string/sunday"></CheckBox>
+
+		<LinearLayout android:id="@+id/bottomButtons"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:layout_centerHorizontal="true"
+			android:gravity="bottom">
+
+			<Button android:layout_height="wrap_content" android:text="@string/addAlarm"
+				android:id="@+id/button1" android:layout_width="0px"
+				android:layout_weight="1" android:drawableTop="@drawable/star"
+				android:onClick="alarmAdd">
+			</Button>
+			<Button android:layout_width="0px" android:layout_height="wrap_content"
+				android:id="@+id/button2" android:layout_centerVertical="true"
+				android:layout_alignParentRight="true" android:layout_weight="1"
+				android:text="@string/cancel" android:drawableTop="@drawable/delete"
+				android:onClick="cancelAdd">
+			</Button>
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

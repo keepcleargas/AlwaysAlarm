@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<ListPreference android:key="alarm_units"
+	android:title="@string/unit_title"
+	android:summary="@string/unit_summary"
+	android:entries="@array/units"
+	android:entryValues="@array/units"
+	android:defaultValue="1"></ListPreference>
+	<RingtonePreference android:key="alarm_tone"
+		android:summary="@string/tone_summary" android:title="@string/tone_title"></RingtonePreference>
+
+</PreferenceScreen>
