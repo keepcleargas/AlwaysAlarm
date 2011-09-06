@@ -55,7 +55,7 @@ public class AlwaysAlarmActivity extends Activity
 				alarms.add(alarm);
 				
 				Calendar cal = alarm.nextAlarmEvent();
-		    	
+				
 		    	Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
 		    	alarmIntent.putExtra("steps", intent.getIntExtra("steps", 0));
 		    	PendingIntent sender = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);

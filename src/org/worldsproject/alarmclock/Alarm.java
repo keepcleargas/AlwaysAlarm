@@ -237,6 +237,7 @@ public class Alarm
 		}
 		
 		cal.add(Calendar.DAY_OF_MONTH, daysUntil);
+		cal.set(Calendar.SECOND, 0);
 		return cal;
 	}
 	
