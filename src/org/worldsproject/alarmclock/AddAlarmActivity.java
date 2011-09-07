@@ -1,13 +1,8 @@
 package org.worldsproject.alarmclock;
 
-import java.util.Calendar;
-
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -51,7 +46,14 @@ public class AddAlarmActivity extends Activity
     	myIntent.putExtra("hour", time.getCurrentHour());
     	myIntent.putExtra("minute", time.getCurrentMinute());
     	
-    	myIntent.putExtra("steps", Integer.parseInt(steps.getText().toString()));
+    	try
+    	{
+    		myIntent.putExtra("steps", Integer.parseInt(steps.getText().toString()));
+    	}
+    	catch(NumberFormatException e)
+    	{
+    		myIntent.putExtra("steps", 1);
+    	}
     	
     	AddAlarmActivity.this.startActivity(myIntent);
     }
