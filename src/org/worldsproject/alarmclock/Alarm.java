@@ -12,7 +12,7 @@ public class Alarm
 	private int hour;
 	private int minute;
 	
-	private int distance;
+	private int steps;
 	
 	private boolean monday;
 	private boolean tuesday;
@@ -22,14 +22,14 @@ public class Alarm
 	private boolean saturday;
 	private boolean sunday;
 	
-	public Alarm(int hour, int minute, int distance, boolean monday,
+	public Alarm(int hour, int minute, int steps, boolean monday,
 			boolean tuesday, boolean wednesday, boolean thursday,
 			boolean friday, boolean saturday, boolean sunday)
 	{
 		super();
 		this.hour = hour;
 		this.minute = minute;
-		this.distance = distance;
+		this.steps = steps;
 		this.monday = monday;
 		this.tuesday = tuesday;
 		this.wednesday = wednesday;
@@ -241,8 +241,8 @@ public class Alarm
 		return cal;
 	}
 	
-	public int getDistance()
+	public int getSteps()
 	{
-		return distance;
+		return steps;
 	}
 }

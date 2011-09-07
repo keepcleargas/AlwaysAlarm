@@ -19,7 +19,7 @@
               <activity android:label="@string/app_name" android:name="AlarmPreferences"/>
               <activity android:label="@string/app_name" android:name="AlarmRinging"/>
               
-              <receiver android:name="AlarmReceiver"></receiver>
+              <receiver android:name="AlarmReceiver" android:process=":remote"></receiver>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

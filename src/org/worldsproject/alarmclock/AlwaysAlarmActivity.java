@@ -62,7 +62,6 @@ public class AlwaysAlarmActivity extends Activity
 		    	
 		    	AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		    	am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
-		    	Toast.makeText(getBaseContext(), "LAST", Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
