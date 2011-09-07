@@ -51,9 +51,6 @@ public class AlwaysAlarmActivity extends Activity
 						intent.getBooleanExtra("saturday", false),
 						intent.getBooleanExtra("sunday", false));
 				
-				root.addView(alarm.generateView(this));
-				alarms.add(alarm);
-				
 				Calendar cal = alarm.nextAlarmEvent();
 				
 				if(cal == null)
@@ -61,6 +58,10 @@ public class AlwaysAlarmActivity extends Activity
 					Toast.makeText(getBaseContext(), "Alarm exists in past.\nNo alarm added", Toast.LENGTH_LONG).show();
 					return;
 				}
+				root.addView(alarm.generateView(this));
+				alarms.add(alarm);
+				
+				
 				Calendar cur = Calendar.getInstance();
 				cur.setTimeInMillis(System.currentTimeMillis());
 				long diff = cal.getTimeInMillis() - cur.getTimeInMillis();
