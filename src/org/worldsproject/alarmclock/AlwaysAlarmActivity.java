@@ -56,6 +56,16 @@ public class AlwaysAlarmActivity extends Activity
 				
 				Calendar cal = alarm.nextAlarmEvent();
 				
+				if(cal == null)
+				{
+					Toast.makeText(getBaseContext(), "Alarm exists in past.\nNo alarm added", Toast.LENGTH_LONG).show();
+					return;
+				}
+				Calendar cur = Calendar.getInstance();
+				cur.setTimeInMillis(System.currentTimeMillis());
+				long diff = cal.getTimeInMillis() - cur.getTimeInMillis();
+				Toast.makeText(getBaseContext(), "" + (diff/1000), Toast.LENGTH_LONG).show();
+				
 		    	Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
 		    	alarmIntent.putExtra("steps", intent.getIntExtra("steps", 0));
 		    	PendingIntent sender = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
