@@ -51,7 +51,7 @@ public class AddAlarmActivity extends Activity
     	myIntent.putExtra("hour", time.getCurrentHour());
     	myIntent.putExtra("minute", time.getCurrentMinute());
     	
-    	myIntent.putExtra("steps", steps.getText().toString());
+    	myIntent.putExtra("steps", Integer.parseInt(steps.getText().toString()));
     	
     	AddAlarmActivity.this.startActivity(myIntent);
     }

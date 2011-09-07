@@ -25,7 +25,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	private float   mLastDiff[] = new float[3*2];
 	private int     mLastMatch = -1;
 
-	private double distance;
+	private double steps;
 
 	private MediaPlayer mMediaPlayer;
 
@@ -33,7 +33,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	{
 		setContentView(R.layout.alarm_ringing);
 
-		this.distance = getIntent().getIntExtra("distance", 0);
+		this.steps = getIntent().getIntExtra("steps", 0);
 
 		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM); 
 		mMediaPlayer = new MediaPlayer();
@@ -120,9 +120,9 @@ public class AlarmRinging extends Activity implements SensorEventListener
 
 							if (isAlmostAsLargeAsPrevious && isPreviousLargeEnough && isNotContra) 
 							{
-								distance -= 0.5;
+								steps -= 0.5;
 
-								if(distance <= 0)
+								if(steps <= 0)
 								{
 									//Stop alarm.
 								}
