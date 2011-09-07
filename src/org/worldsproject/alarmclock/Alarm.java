@@ -82,163 +82,108 @@ public class Alarm
 	 */
 	public Calendar nextAlarmEvent()
 	{
-		Calendar cal = Calendar.getInstance();
-		cal.setTimeInMillis(System.currentTimeMillis());
+		Calendar now = Calendar.getInstance();
+		Calendar rv = Calendar.getInstance();
+		now.setTimeInMillis(System.currentTimeMillis());
+		rv.setTimeInMillis(System.currentTimeMillis());
+		rv.set(Calendar.HOUR, hour);
+		rv.set(Calendar.MINUTE, minute);
+		rv.set(Calendar.SECOND, 0);
 		
-		int day = cal.get(Calendar.DAY_OF_WEEK);
-		int curHour = cal.get(Calendar.HOUR_OF_DAY);
-		int curMin = cal.get(Calendar.MINUTE);
-		
-		cal.set(Calendar.HOUR_OF_DAY, hour);
-		cal.set(Calendar.MINUTE, minute);
-		
-		//how many days we have to go forward.
-		int daysUntil = -1;
-		
-		//first check if there even is a repeat
-		if(!monday && !tuesday && !wednesday && !thursday && !friday && !saturday && !sunday)
+		//Determine if oneshot alarm.
+		if(!monday && !tuesday && !wednesday && !thursday && !friday && !friday && !saturday && !sunday)
 		{
-			if(curHour < hour || (curHour == hour && curMin < minute))
+			if(now.before(rv))
+				return rv;
+			else
+				return null;
+		}
+		
+		Calendar mon = getNext(Calendar.MONDAY, hour, minute);
+		Calendar tue = getNext(Calendar.TUESDAY, hour, minute);
+		Calendar wed = getNext(Calendar.WEDNESDAY, hour, minute);
+		Calendar thu = getNext(Calendar.THURSDAY, hour, minute);
+		Calendar fri = getNext(Calendar.FRIDAY, hour, minute);
+		Calendar sat = getNext(Calendar.SATURDAY, hour, minute);
+		Calendar sun = getNext(Calendar.SUNDAY, hour, minute);
+		
+		Calendar closest = Calendar.getInstance();
+		closest.setTimeInMillis(System.currentTimeMillis());
+		closest.add(Calendar.MONTH, 10);
+		
+		if(monday)
+		{
+			if(now.before(mon) && mon.before(closest))
 			{
-				return cal;
+				closest = mon;
 			}
-			
-			return null;
 		}
 		
-		switch(day)
+		if(tuesday)
 		{
-			case Calendar.MONDAY:
-				if(tuesday)
-					daysUntil = 1;
-				else if(wednesday)
-					daysUntil = 2;
-				else if(thursday)
-					daysUntil = 3;
-				else if(friday)
-					daysUntil = 4;
-				else if(saturday)
-					daysUntil = 5;
-				else if(sunday)
-					daysUntil = 6;
-				else if(monday)
-					if(curHour >= hour && curMin > minute)
-						daysUntil = 7;
-					else
-						daysUntil = 0;
-			case Calendar.TUESDAY:
-				if(wednesday)
-					daysUntil = 1;
-				else if(thursday)
-					daysUntil = 2;
-				else if(friday)
-					daysUntil = 3;
-				else if(saturday)
-					daysUntil = 4;
-				else if(sunday)
-					daysUntil = 5;
-				else if(monday)
-					daysUntil = 6;
-				else if(tuesday)
-					if(curHour >= hour && curMin > minute)
-						daysUntil = 7;
-					else
-						daysUntil = 0;
-			case Calendar.WEDNESDAY:
-				if(thursday)
-					daysUntil = 1;
-				else if(friday)
-					daysUntil = 2;
-				else if(saturday)
-					daysUntil = 3;
-				else if(sunday)
-					daysUntil = 4;
-				else if(monday)
-					daysUntil = 5;
-				else if(tuesday)
-					daysUntil = 6;
-				else if(wednesday)
-					if(curHour >= hour && curMin > minute)
-						daysUntil = 7;
-					else
-						daysUntil = 0;
-			case Calendar.THURSDAY:
-				if(friday)
-					daysUntil = 1;
-				else if(saturday)
-					daysUntil = 2;
-				else if(sunday)
-					daysUntil = 3;
-				else if(monday)
-					daysUntil = 4;
-				else if(tuesday)
-					daysUntil = 5;
-				else if(wednesday)
-					daysUntil = 6;
-				else if(thursday)
-					if(curHour >= hour && curMin > minute)
-						daysUntil = 7;
-					else
-						daysUntil = 0;
-			case Calendar.FRIDAY:
-				if(saturday)
-					daysUntil = 1;
-				else if(sunday)
-					daysUntil = 2;
-				else if(monday)
-					daysUntil = 3;
-				else if(tuesday)
-					daysUntil = 4;
-				else if(wednesday)
-					daysUntil = 5;
-				else if(thursday)
-					daysUntil = 6;
-				else if(friday)
-					if(curHour >= hour && curMin > minute)
-						daysUntil = 7;
-					else
-						daysUntil = 0;
-			case Calendar.SATURDAY:
-				if(sunday)
-					daysUntil = 1;
-				else if(monday)
-					daysUntil = 2;
-				else if(tuesday)
-					daysUntil = 3;
-				else if(wednesday)
-					daysUntil = 4;
-				else if(thursday)
-					daysUntil = 5;
-				else if(friday)
-					daysUntil = 6;
-				else if(saturday)
-					if(curHour >= hour && curMin > minute)
-						daysUntil = 7;
-					else
-						daysUntil = 0;
-			case Calendar.SUNDAY:
-				if(monday)
-					daysUntil = 1;
-				else if(tuesday)
-					daysUntil = 2;
-				else if(wednesday)
-					daysUntil = 3;
-				else if(thursday)
-					daysUntil = 4;
-				else if(friday)
-					daysUntil = 5;
-				else if(saturday)
-					daysUntil = 6;
-				else if(sunday)
-					if(curHour >= hour && curMin > minute)
-						daysUntil = 7;
-					else
-						daysUntil = 0;
+			if(now.before(tue) && tue.before(closest))
+			{
+				closest = tue;
+			}
 		}
 		
-		cal.add(Calendar.DAY_OF_MONTH, daysUntil);
-		cal.set(Calendar.SECOND, 0);
-		return cal;
+		if(wednesday)
+		{
+			if(now.before(wed) && wed.before(closest))
+			{
+				closest = wed;
+			}
+		}
+		
+		if(thursday)
+		{
+			if(now.before(thu) && thu.before(closest))
+			{
+				closest = thu;
+			}
+		}
+		
+		if(friday)
+		{
+			if(now.before(fri) && fri.before(closest))
+			{
+				closest = fri;
+			}
+		}
+		
+		if(saturday)
+		{
+			if(now.before(sat) && sat.before(closest))
+			{
+				closest = sat;
+			}
+		}
+		
+		if(sunday)
+		{
+			if(now.before(sun) && sun.before(closest))
+			{
+				closest = sun;
+			}
+		}
+		
+		return closest;
+	}
+	
+	private Calendar getNext(int day, int hour, int minute)
+	{
+		Calendar rv = Calendar.getInstance();
+		rv.setTimeInMillis(System.currentTimeMillis());
+		
+		while(day != rv.get(Calendar.DAY_OF_WEEK))
+		{
+			rv.add(Calendar.DAY_OF_MONTH, 1);
+		}
+		
+		rv.set(Calendar.HOUR, hour);
+		rv.set(Calendar.MINUTE, minute);
+		rv.set(Calendar.SECOND, 0);
+		return rv;
 	}
 	
 	public int getSteps()
