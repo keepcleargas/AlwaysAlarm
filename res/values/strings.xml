@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, AlwaysAlarmActivity!</string>
     <string name="app_name">AlwaysAlarm</string>
     <string name="addAlarm">Add Alarm</string>
     <string name="settings">Settings</string>
@@ -13,13 +12,11 @@
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
     <string name="setup_alarm">Setup Alarm</string>
-    <string name="meters">Meters</string>
-    <string name="feet">Feet</string>
     <string name="cancel">Cancel</string>
     <string name="tone_summary">Select Alarm Tone</string>
     <string name="tone_title">Pick Alarm Tone</string>
-    <string name="unit_title">Pick Units</string>
-    <string name="unit_summary">Choose which units AlwaysAlarm uses.</string>
+    <string name="unit_title">Time Mode</string>
+    <string name="unit_summary">Choose to display time in 12 hour or 24 hour format</string>
     <string name="alarm_ringing_title">Time to get up!</string>
     <string name="alarm_ringing_message">Distance until alarm turns off</string>
     <string name="monday_short">MON</string>

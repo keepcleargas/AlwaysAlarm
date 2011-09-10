@@ -7,17 +7,17 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class AlwaysAlarmActivity extends Activity 
 {
 	public static ArrayList<Alarm> alarms = new ArrayList<Alarm>();
+	private SharedPreferences pref;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -26,6 +26,7 @@ public class AlwaysAlarmActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		pref = PreferenceManager.getDefaultSharedPreferences(this);
 		Intent intent = getIntent();
 		String mode = intent.getStringExtra("mode");
 		
@@ -40,6 +41,7 @@ public class AlwaysAlarmActivity extends Activity
 		{
 			if(mode.equals("new_alarm"))
 			{
+				String unit = pref.getString("alarm_units", "false");
 				Alarm alarm = new Alarm(intent.getIntExtra("hour", 0),
 						intent.getIntExtra("minute", 0),
 						intent.getIntExtra("steps", 0),
@@ -49,13 +51,14 @@ public class AlwaysAlarmActivity extends Activity
 						intent.getBooleanExtra("thursday", false),
 						intent.getBooleanExtra("friday", false),
 						intent.getBooleanExtra("saturday", false),
-						intent.getBooleanExtra("sunday", false));
+						intent.getBooleanExtra("sunday", false), 
+						(unit.equalsIgnoreCase("false") ? false : true));
 				
 				Calendar cal = alarm.nextAlarmEvent();
 				
 				if(cal == null)
 				{
-					Toast.makeText(getBaseContext(), "Alarm exists in past.\nNo alarm added", Toast.LENGTH_LONG).show();
+					Toast.makeText(getBaseContext(), "Alarm exists in past.\n  No alarm added", Toast.LENGTH_LONG).show();
 					return;
 				}
 				root.addView(alarm.generateView(this));

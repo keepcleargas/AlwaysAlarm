@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class AlarmRinging extends Activity implements SensorEventListener
 {
@@ -125,6 +126,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 								if(steps <= 0)
 								{
 									//Stop alarm.
+									Toast.makeText(getBaseContext(), "Step Taken", Toast.LENGTH_SHORT).show();
 								}
 								mLastMatch = extType;
 							}

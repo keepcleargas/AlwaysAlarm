@@ -2,7 +2,9 @@ package org.worldsproject.alarmclock;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -16,6 +18,11 @@ public class AddAlarmActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_alarm);
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        
+        String which = pref.getString("alarm_units", "false");
+        TimePicker time = (TimePicker)findViewById(R.id.timePicker1);
+        time.setIs24HourView((which.equalsIgnoreCase("false") ? false : true));
     }
     
     public void alarmAdd(View v)

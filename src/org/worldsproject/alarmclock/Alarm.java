@@ -22,9 +22,11 @@ public class Alarm
 	private boolean saturday;
 	private boolean sunday;
 	
+	private boolean twofour;
+	
 	public Alarm(int hour, int minute, int steps, boolean monday,
 			boolean tuesday, boolean wednesday, boolean thursday,
-			boolean friday, boolean saturday, boolean sunday)
+			boolean friday, boolean saturday, boolean sunday, boolean twofour)
 	{
 		super();
 		this.hour = hour;
@@ -37,6 +39,7 @@ public class Alarm
 		this.friday = friday;
 		this.saturday = saturday;
 		this.sunday = sunday;
+		this.twofour = twofour;
 	}
 	
 	/**
@@ -45,10 +48,24 @@ public class Alarm
 	 */
 	public String timeString()
 	{
+		String sHour = "" + hour;
+		String amPM = "";
+		
+		if(!twofour)
+		{
+			if(hour > 12)
+			{
+				sHour = "" + (hour - 12);
+				amPM = " PM";
+			}
+			else
+				amPM = " AM";
+		}
+		
 		if(minute < 10)
-			return "" +hour + ":" + "0" + minute;
+			return "" +sHour + ":" + "0" + minute + amPM;
 		else
-			return "" + hour + ":" + minute;
+			return "" + sHour + ":" + minute + amPM;
 	}
 	
 	public View generateView(Activity a)
@@ -84,9 +101,7 @@ public class Alarm
 	{
 		Calendar now = Calendar.getInstance();
 		Calendar rv = Calendar.getInstance();
-		now.setTimeInMillis(System.currentTimeMillis());
-		rv.setTimeInMillis(System.currentTimeMillis());
-		rv.set(Calendar.HOUR, hour);
+		rv.set(Calendar.HOUR_OF_DAY, hour);
 		rv.set(Calendar.MINUTE, minute);
 		rv.set(Calendar.SECOND, 0);
 		
@@ -180,7 +195,7 @@ public class Alarm
 			rv.add(Calendar.DAY_OF_MONTH, 1);
 		}
 		
-		rv.set(Calendar.HOUR, hour);
+		rv.set(Calendar.HOUR_OF_DAY, hour);
 		rv.set(Calendar.MINUTE, minute);
 		rv.set(Calendar.SECOND, 0);
 		return rv;

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="units">
-    	<item>Meters</item>
-    	<item>Feet</item>
+    	<item>12 Hour</item>
+    	<item>24 Hour</item>
+    </string-array>
+    
+    <string-array name="timebool">
+    	<item>false</item>
+    	<item>true</item>
     </string-array>
 </resources>
