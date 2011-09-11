@@ -64,6 +64,8 @@ public class Alarm extends LinearLayout
 			((TextView)findViewById(R.id.view_saturday)).setTextColor(Color.MAGENTA);
 		if(sunday)
 			((TextView)findViewById(R.id.view_sunday)).setTextColor(Color.MAGENTA);
+		
+		
 	}
 	
 	/**
