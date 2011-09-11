@@ -34,7 +34,7 @@ public class AlwaysAlarmActivity extends Activity
 		root.removeAllViews();
 		for(Alarm v:alarms)
 		{
-			root.addView(v.generateView(this));
+			root.addView(v);
 		}
 
 		if(mode != null)
@@ -42,7 +42,8 @@ public class AlwaysAlarmActivity extends Activity
 			if(mode.equals("new_alarm"))
 			{
 				String unit = pref.getString("alarm_units", "false");
-				Alarm alarm = new Alarm(intent.getIntExtra("hour", 0),
+				Alarm alarm = new Alarm(this,
+						intent.getIntExtra("hour", 0),
 						intent.getIntExtra("minute", 0),
 						intent.getIntExtra("steps", 0),
 						intent.getBooleanExtra("monday", false),
@@ -61,7 +62,7 @@ public class AlwaysAlarmActivity extends Activity
 					Toast.makeText(getBaseContext(), "Alarm exists in past.\n  No alarm added", Toast.LENGTH_LONG).show();
 					return;
 				}
-				root.addView(alarm.generateView(this));
+				root.addView(alarm);
 				alarms.add(alarm);
 				
 				
@@ -79,6 +80,13 @@ public class AlwaysAlarmActivity extends Activity
 			}
 		}
 	}
+	
+	public void removeAlarm(View v)
+	{
+		LinearLayout root = (LinearLayout)findViewById(R.id.alarms);
+		root.removeView((Alarm)v.getParent().getParent().getParent());//TODO This feels dirty...
+		alarms.remove((Alarm)v.getParent().getParent().getParent());
+	}
 
 	public void addAlarm(View v)
 	{
@@ -90,13 +98,5 @@ public class AlwaysAlarmActivity extends Activity
 	{
 		Intent myIntent = new Intent(AlwaysAlarmActivity.this, AlarmPreferences.class);
 		AlwaysAlarmActivity.this.startActivity(myIntent);
-	}
-	
-	private String formatMinute(int second)
-	{
-		if(second < 10)
-			return "0" + second;
-		else
-			return "" + second;
 	}
 }

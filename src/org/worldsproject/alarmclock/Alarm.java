@@ -5,9 +5,10 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class Alarm
+public class Alarm extends LinearLayout
 {
 	private int hour;
 	private int minute;
@@ -24,11 +25,13 @@ public class Alarm
 	
 	private boolean twofour;
 	
-	public Alarm(int hour, int minute, int steps, boolean monday,
+	
+	public Alarm(Activity parent, int hour, int minute, int steps, boolean monday,
 			boolean tuesday, boolean wednesday, boolean thursday,
 			boolean friday, boolean saturday, boolean sunday, boolean twofour)
 	{
-		super();
+		super(parent);
+		
 		this.hour = hour;
 		this.minute = minute;
 		this.steps = steps;
@@ -40,6 +43,27 @@ public class Alarm
 		this.saturday = saturday;
 		this.sunday = sunday;
 		this.twofour = twofour;
+		
+		View.inflate(parent, R.layout.alarm, this);
+		
+		
+		TextView tv = (TextView)findViewById(R.id.textView1);
+		tv.setText(timeString());
+		
+		if(monday)
+			((TextView)findViewById(R.id.view_monday)).setTextColor(Color.MAGENTA);
+		if(tuesday)
+			((TextView)findViewById(R.id.view_tuesday)).setTextColor(Color.MAGENTA);
+		if(wednesday)
+			((TextView)findViewById(R.id.view_wednesday)).setTextColor(Color.MAGENTA);
+		if(thursday)
+			((TextView)findViewById(R.id.view_thursday)).setTextColor(Color.MAGENTA);
+		if(friday)
+			((TextView)findViewById(R.id.view_friday)).setTextColor(Color.MAGENTA);
+		if(saturday)
+			((TextView)findViewById(R.id.view_saturday)).setTextColor(Color.MAGENTA);
+		if(sunday)
+			((TextView)findViewById(R.id.view_sunday)).setTextColor(Color.MAGENTA);
 	}
 	
 	/**
@@ -66,31 +90,6 @@ public class Alarm
 			return "" +sHour + ":" + "0" + minute + amPM;
 		else
 			return "" + sHour + ":" + minute + amPM;
-	}
-	
-	public View generateView(Activity a)
-	{
-		View alarm = View.inflate(a, R.layout.alarm, null);
-		
-		TextView tv = (TextView)alarm.findViewById(R.id.textView1);
-		tv.setText(timeString());
-		
-		if(monday)
-			((TextView)alarm.findViewById(R.id.view_monday)).setTextColor(Color.MAGENTA);
-		if(tuesday)
-			((TextView)alarm.findViewById(R.id.view_tuesday)).setTextColor(Color.MAGENTA);
-		if(wednesday)
-			((TextView)alarm.findViewById(R.id.view_wednesday)).setTextColor(Color.MAGENTA);
-		if(thursday)
-			((TextView)alarm.findViewById(R.id.view_thursday)).setTextColor(Color.MAGENTA);
-		if(friday)
-			((TextView)alarm.findViewById(R.id.view_friday)).setTextColor(Color.MAGENTA);
-		if(saturday)
-			((TextView)alarm.findViewById(R.id.view_saturday)).setTextColor(Color.MAGENTA);
-		if(sunday)
-			((TextView)alarm.findViewById(R.id.view_sunday)).setTextColor(Color.MAGENTA);
-		
-		return alarm;
 	}
 	
 	/**
