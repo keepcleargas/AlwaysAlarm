@@ -3,6 +3,7 @@ package org.worldsproject.alarmclock;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -24,6 +25,8 @@ public class Alarm extends LinearLayout
 	private boolean sunday;
 	
 	private boolean twofour;
+	
+	private PendingIntent nextAlarm = null;
 	
 	
 	public Alarm(Activity parent, int hour, int minute, int steps, boolean monday,
@@ -205,5 +208,15 @@ public class Alarm extends LinearLayout
 	public int getSteps()
 	{
 		return steps;
+	}
+	
+	public void setIntent(PendingIntent pi)
+	{
+		nextAlarm = pi;
+	}
+	
+	public PendingIntent getAlarmIntent()
+	{
+		return nextAlarm;
 	}
 }
