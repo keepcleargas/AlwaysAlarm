@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -128,10 +129,9 @@ public class AlwaysAlarmActivity extends Activity
 			}
 		}
 
-		LayoutInflater inflater = getLayoutInflater();
-		View layout = inflater.inflate(R.layout.alarm_toast, (ViewGroup) findViewById(R.id.alarm_toast));
-		Toast toast = Toast.makeText(getBaseContext(), buf.toString(), Toast.LENGTH_LONG);
-		toast.setView(layout);
+		Toast toast = Toast.makeText(this, buf, Toast.LENGTH_LONG);
+		((TextView)((LinearLayout)toast.getView()).getChildAt(0))
+	    .setGravity(Gravity.CENTER_HORIZONTAL);
 		toast.show();
 
 		Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
