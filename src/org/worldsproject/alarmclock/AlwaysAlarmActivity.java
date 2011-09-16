@@ -10,7 +10,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -21,6 +24,8 @@ public class AlwaysAlarmActivity extends Activity
 
 	public static LinearLayout root;
 	private SharedPreferences pref;
+	
+	private final long MSINWEEK = 604800000;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -76,7 +81,7 @@ public class AlwaysAlarmActivity extends Activity
 	 */
 	private boolean createAlarm(Alarm alarm)
 	{
-		Calendar cal = alarm.nextAlarmEvent();
+		ArrayList<Calendar> cal = alarm.nextAlarmEvent();
 
 		if(cal == null)
 		{
@@ -85,7 +90,7 @@ public class AlwaysAlarmActivity extends Activity
 		}
 
 		Calendar cur = Calendar.getInstance();
-		long diff = cal.getTimeInMillis() - cur.getTimeInMillis();
+		long diff = cal.get(0).getTimeInMillis() - cur.getTimeInMillis();
 
 		int seconds = (int)(diff/1000)%60;
 		int minutes = (int)(diff/60000)%60;
@@ -123,23 +128,32 @@ public class AlwaysAlarmActivity extends Activity
 			}
 		}
 
-		Toast.makeText(getBaseContext(), buf.toString(), Toast.LENGTH_LONG).show();
+		LayoutInflater inflater = getLayoutInflater();
+		View layout = inflater.inflate(R.layout.alarm_toast, (ViewGroup) findViewById(R.id.alarm_toast));
+		Toast toast = Toast.makeText(getBaseContext(), buf.toString(), Toast.LENGTH_LONG);
+		toast.setView(layout);
+		toast.show();
 
 		Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
 		alarmIntent.putExtra("steps", alarm.getSteps());
+		
 		PendingIntent sender = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
 		alarm.setIntent(sender);
 		
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-		am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
+		
+		for(Calendar c:cal)
+			am.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), MSINWEEK, sender);
+		
 		((ToggleButton)alarm.findViewById(R.id.toggleButton1)).setChecked(true);
 		return true;
 	}
 
 	public void removeAlarm(View v)
 	{
-		Alarm temp = (Alarm)v.getParent().getParent().getParent();
-		root.removeView(temp);//TODO This feels dirty...
+		Alarm temp = (Alarm)v.getParent().getParent().getParent();//TODO This feels dirty...
+		root.removeView(temp);
 		alarms.remove(temp);
 		((AlarmManager)getSystemService(ALARM_SERVICE)).cancel(temp.getAlarmIntent());
 	}
