@@ -29,12 +29,11 @@ public final class R {
         public static final int striprepeat=0x7f02000b;
     }
     public static final class id {
-        public static final int adView=0x7f06001e;
+        public static final int adView=0x7f06001c;
         public static final int add_alarm_header1=0x7f060003;
-        public static final int alarm_toast=0x7f060019;
-        public static final int alarms=0x7f06001c;
+        public static final int alarms=0x7f06001a;
         public static final int bottomButtons=0x7f06000c;
-        public static final int bottomStuff=0x7f06001d;
+        public static final int bottomStuff=0x7f06001b;
         public static final int button1=0x7f06000d;
         public static final int button2=0x7f06000e;
         public static final int checkBox1=0x7f060005;
@@ -45,10 +44,9 @@ public final class R {
         public static final int checkBox6=0x7f06000a;
         public static final int checkBox7=0x7f06000b;
         public static final int imageButton2=0x7f060010;
-        public static final int relativeLayout1=0x7f06001b;
-        public static final int relativeLayout2=0x7f06001f;
+        public static final int relativeLayout1=0x7f060019;
+        public static final int relativeLayout2=0x7f06001d;
         public static final int scroll=0x7f060000;
-        public static final int text=0x7f06001a;
         public static final int textView1=0x7f060001;
         public static final int textView2=0x7f060002;
         public static final int textView3=0x7f060018;
@@ -66,41 +64,38 @@ public final class R {
         public static final int add_alarm=0x7f030000;
         public static final int alarm=0x7f030001;
         public static final int alarm_ringing=0x7f030002;
-        public static final int alarm_toast=0x7f030003;
-        public static final int main=0x7f030004;
-        public static final int preferences=0x7f030005;
+        public static final int main=0x7f030003;
+        public static final int preferences=0x7f030004;
     }
     public static final class string {
-        public static final int aa_header1=0x7f05001d;
-        public static final int aa_header2=0x7f05001e;
+        public static final int aa_header1=0x7f05001b;
+        public static final int aa_header2=0x7f05001c;
         public static final int addAlarm=0x7f050001;
-        public static final int alarm_ringing_message=0x7f050012;
-        public static final int alarm_ringing_title=0x7f050011;
+        public static final int alarm_ringing_message=0x7f050010;
+        public static final int alarm_ringing_title=0x7f05000f;
         public static final int app_name=0x7f050000;
         public static final int cancel=0x7f05000c;
         public static final int currentAlarms=0x7f050003;
         public static final int friday=0x7f050008;
-        public static final int friday_short=0x7f050017;
+        public static final int friday_short=0x7f050015;
         public static final int monday=0x7f050004;
-        public static final int monday_short=0x7f050013;
+        public static final int monday_short=0x7f050011;
         public static final int saturday=0x7f050009;
-        public static final int saturday_short=0x7f050018;
+        public static final int saturday_short=0x7f050016;
         public static final int settings=0x7f050002;
         public static final int setup_alarm=0x7f05000b;
-        public static final int steps=0x7f05001a;
-        public static final int steps_summary=0x7f05001c;
-        public static final int steps_title=0x7f05001b;
+        public static final int steps=0x7f050018;
+        public static final int steps_summary=0x7f05001a;
+        public static final int steps_title=0x7f050019;
         public static final int sunday=0x7f05000a;
-        public static final int sunday_short=0x7f050019;
+        public static final int sunday_short=0x7f050017;
         public static final int thursday=0x7f050007;
-        public static final int thursday_short=0x7f050016;
+        public static final int thursday_short=0x7f050014;
         public static final int tone_summary=0x7f05000d;
         public static final int tone_title=0x7f05000e;
         public static final int tuesday=0x7f050005;
-        public static final int tuesday_short=0x7f050014;
-        public static final int unit_summary=0x7f050010;
-        public static final int unit_title=0x7f05000f;
+        public static final int tuesday_short=0x7f050012;
         public static final int wednesday=0x7f050006;
-        public static final int wednesday_short=0x7f050015;
+        public static final int wednesday_short=0x7f050013;
     }
 }

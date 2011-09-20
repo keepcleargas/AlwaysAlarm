@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -58,7 +59,6 @@ public class AlwaysAlarmActivity extends Activity
 		{
 			if(mode.equals("new_alarm"))
 			{
-				String unit = pref.getString("alarm_units", "false");
 				Alarm alarm = new Alarm(this,
 						intent.getIntExtra("hour", 0),
 						intent.getIntExtra("minute", 0),
@@ -69,7 +69,7 @@ public class AlwaysAlarmActivity extends Activity
 						intent.getBooleanExtra("friday", false),
 						intent.getBooleanExtra("saturday", false),
 						intent.getBooleanExtra("sunday", false), 
-						(unit.equalsIgnoreCase("false") ? false : true));
+						(DateFormat.is24HourFormat(this)));
 
 				if(createAlarm(alarm))
 				{

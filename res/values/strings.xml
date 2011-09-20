@@ -15,8 +15,6 @@
     <string name="cancel">Cancel</string>
     <string name="tone_summary">Select Alarm Tone</string>
     <string name="tone_title">Pick Alarm Tone</string>
-    <string name="unit_title">Time Mode</string>
-    <string name="unit_summary">Choose to display time in 12 hour or 24 hour format</string>
     <string name="alarm_ringing_title">Time to get up!</string>
     <string name="alarm_ringing_message">Distance until alarm turns off</string>
     <string name="monday_short">MON</string>
