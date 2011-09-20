@@ -29,4 +29,6 @@
     <string name="steps">Steps</string>
     <string name="steps_title">Number of steps</string>
     <string name="steps_summary">This is the number of steps required before the alarm will turn off. The default is 20.</string>
+    <string name="aa_header1">Time Alarms Goes Off</string>
+    <string name="aa_header2">Days Alarm Repeats</string>
 </resources>

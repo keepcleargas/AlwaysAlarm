@@ -29,37 +29,38 @@ public final class R {
         public static final int striprepeat=0x7f02000b;
     }
     public static final class id {
-        public static final int adView=0x7f06001d;
-        public static final int alarm_toast=0x7f060018;
-        public static final int alarms=0x7f06001b;
-        public static final int bottomButtons=0x7f06000b;
-        public static final int bottomStuff=0x7f06001c;
-        public static final int button1=0x7f06000c;
-        public static final int button2=0x7f06000d;
-        public static final int checkBox1=0x7f060004;
-        public static final int checkBox2=0x7f060005;
-        public static final int checkBox3=0x7f060006;
-        public static final int checkBox4=0x7f060007;
-        public static final int checkBox5=0x7f060008;
-        public static final int checkBox6=0x7f060009;
-        public static final int checkBox7=0x7f06000a;
-        public static final int imageButton2=0x7f06000f;
-        public static final int relativeLayout1=0x7f06001a;
-        public static final int relativeLayout2=0x7f06001e;
+        public static final int adView=0x7f06001e;
+        public static final int add_alarm_header1=0x7f060003;
+        public static final int alarm_toast=0x7f060019;
+        public static final int alarms=0x7f06001c;
+        public static final int bottomButtons=0x7f06000c;
+        public static final int bottomStuff=0x7f06001d;
+        public static final int button1=0x7f06000d;
+        public static final int button2=0x7f06000e;
+        public static final int checkBox1=0x7f060005;
+        public static final int checkBox2=0x7f060006;
+        public static final int checkBox3=0x7f060007;
+        public static final int checkBox4=0x7f060008;
+        public static final int checkBox5=0x7f060009;
+        public static final int checkBox6=0x7f06000a;
+        public static final int checkBox7=0x7f06000b;
+        public static final int imageButton2=0x7f060010;
+        public static final int relativeLayout1=0x7f06001b;
+        public static final int relativeLayout2=0x7f06001f;
         public static final int scroll=0x7f060000;
-        public static final int text=0x7f060019;
+        public static final int text=0x7f06001a;
         public static final int textView1=0x7f060001;
         public static final int textView2=0x7f060002;
-        public static final int textView3=0x7f060017;
-        public static final int timePicker1=0x7f060003;
-        public static final int toggleButton1=0x7f06000e;
-        public static final int view_friday=0x7f060014;
-        public static final int view_monday=0x7f060010;
-        public static final int view_saturday=0x7f060015;
-        public static final int view_sunday=0x7f060016;
-        public static final int view_thursday=0x7f060013;
-        public static final int view_tuesday=0x7f060011;
-        public static final int view_wednesday=0x7f060012;
+        public static final int textView3=0x7f060018;
+        public static final int timePicker1=0x7f060004;
+        public static final int toggleButton1=0x7f06000f;
+        public static final int view_friday=0x7f060015;
+        public static final int view_monday=0x7f060011;
+        public static final int view_saturday=0x7f060016;
+        public static final int view_sunday=0x7f060017;
+        public static final int view_thursday=0x7f060014;
+        public static final int view_tuesday=0x7f060012;
+        public static final int view_wednesday=0x7f060013;
     }
     public static final class layout {
         public static final int add_alarm=0x7f030000;
@@ -70,6 +71,8 @@ public final class R {
         public static final int preferences=0x7f030005;
     }
     public static final class string {
+        public static final int aa_header1=0x7f05001d;
+        public static final int aa_header2=0x7f05001e;
         public static final int addAlarm=0x7f050001;
         public static final int alarm_ringing_message=0x7f050012;
         public static final int alarm_ringing_title=0x7f050011;

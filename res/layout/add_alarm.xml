@@ -9,38 +9,65 @@
 		<TextView android:id="@+id/textView2" android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge"
 			android:text="@string/setup_alarm" android:layout_gravity="center"
-			android:layout_marginBottom="10dp"></TextView>
+			android:layout_marginBottom="10dp" android:textSize="18dp">
+		</TextView>
+
+		<TextView android:id="@+id/add_alarm_header1"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:text="@string/aa_header1" android:layout_gravity="center">
+		</TextView>
 		<TimePicker android:id="@+id/timePicker1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:layout_gravity="center"> 
+			android:layout_gravity="center">
 		</TimePicker>
-		
-		<CheckBox android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/checkBox1"
-			android:text="@string/monday"></CheckBox>
-		<CheckBox android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/checkBox2"
-			android:text="@string/tuesday"></CheckBox>
-		<CheckBox android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/checkBox3"
-			android:text="@string/wednesday"></CheckBox>
-		<CheckBox android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/checkBox4"
-			android:text="@string/thursday"></CheckBox>
-		<CheckBox android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/checkBox5"
-			android:text="@string/friday"></CheckBox>
-		<CheckBox android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/checkBox6"
-			android:text="@string/saturday"></CheckBox>
-		<CheckBox android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:id="@+id/checkBox7"
-			android:text="@string/sunday"></CheckBox>
+		<TextView android:id="@+id/add_alarm_header1"
+			android:layout_height="wrap_content" android:layout_width="wrap_content"
+			android:text="@string/aa_header2" android:layout_gravity="center"
+			android:layout_marginTop="10dp"
+			android:textSize="18dp">
+		</TextView>
 
+		<TableLayout android:layout_width="wrap_content"
+			android:layout_height="wrap_content" android:layout_gravity="center_horizontal" >
+			<TableRow>
+				<CheckBox android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/checkBox1"
+					android:text="@string/monday"></CheckBox>
+			</TableRow>
+			<TableRow>
+				<CheckBox android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/checkBox2"
+					android:text="@string/tuesday"></CheckBox>
+			</TableRow>
+			<TableRow>
+				<CheckBox android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/checkBox3"
+					android:text="@string/wednesday"></CheckBox>
+			</TableRow>
+			<TableRow>
+				<CheckBox android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/checkBox4"
+					android:text="@string/thursday"></CheckBox>
+			</TableRow>
+			<TableRow>
+				<CheckBox android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/checkBox5"
+					android:text="@string/friday"></CheckBox>
+			</TableRow>
+			<TableRow>
+				<CheckBox android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/checkBox6"
+					android:text="@string/saturday"></CheckBox>
+			</TableRow>
+			<TableRow>
+				<CheckBox android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:id="@+id/checkBox7"
+					android:text="@string/sunday"></CheckBox>
+			</TableRow>
+		</TableLayout>
 		<LinearLayout android:id="@+id/bottomButtons"
 			android:layout_height="wrap_content" android:layout_width="fill_parent"
-			android:layout_centerHorizontal="true"
-			android:gravity="bottom">
+			android:layout_centerHorizontal="true" android:gravity="bottom">
 
 			<Button android:layout_height="wrap_content" android:text="@string/addAlarm"
 				android:id="@+id/button1" android:layout_width="0px"
