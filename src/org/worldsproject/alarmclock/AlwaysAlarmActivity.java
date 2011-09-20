@@ -37,11 +37,9 @@ public class AlwaysAlarmActivity extends Activity
 		Intent intent = getIntent();
 		String mode = intent.getStringExtra("mode");
 
-//		if(alarms.size() > 0)
-//			root = (LinearLayout)alarms.get(0).getParent();
-//		else
-			root = (LinearLayout)findViewById(R.id.alarms);
-		root.removeAllViews();
+		root = (LinearLayout)findViewById(R.id.alarms);
+		if(root != null)
+			root.removeAllViews();
 		
 		for(Alarm v:alarms)
 		{
@@ -64,7 +62,6 @@ public class AlwaysAlarmActivity extends Activity
 				Alarm alarm = new Alarm(this,
 						intent.getIntExtra("hour", 0),
 						intent.getIntExtra("minute", 0),
-						intent.getIntExtra("steps", 0),
 						intent.getBooleanExtra("monday", false),
 						intent.getBooleanExtra("tuesday", false),
 						intent.getBooleanExtra("wednesday", false),
@@ -141,7 +138,6 @@ public class AlwaysAlarmActivity extends Activity
 		toast.show();
 
 		Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
-		alarmIntent.putExtra("steps", alarm.getSteps());
 		
 		PendingIntent sender = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

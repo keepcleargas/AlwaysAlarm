@@ -34,8 +34,6 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	{
 		setContentView(R.layout.alarm_ringing);
 
-		this.steps = getIntent().getIntExtra("steps", 0);
-
 		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM); 
 		mMediaPlayer = new MediaPlayer();
 		try

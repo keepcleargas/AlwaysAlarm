@@ -17,8 +17,6 @@ public class Alarm extends LinearLayout
 	private int hour;
 	private int minute;
 
-	private int steps;
-
 	private boolean monday;
 	private boolean tuesday;
 	private boolean wednesday;
@@ -34,7 +32,7 @@ public class Alarm extends LinearLayout
 	private PendingIntent nextAlarm = null;
 
 
-	public Alarm(Activity parent, int hour, int minute, int steps, boolean monday,
+	public Alarm(Activity parent, int hour, int minute, boolean monday,
 			boolean tuesday, boolean wednesday, boolean thursday,
 			boolean friday, boolean saturday, boolean sunday, boolean twofour)
 	{
@@ -42,7 +40,6 @@ public class Alarm extends LinearLayout
 
 		this.hour = hour;
 		this.minute = minute;
-		this.steps = steps;
 		this.monday = monday;
 		this.tuesday = tuesday;
 		this.wednesday = wednesday;
@@ -203,11 +200,6 @@ public class Alarm extends LinearLayout
 		rv.set(Calendar.MINUTE, minute);
 		rv.set(Calendar.SECOND, 0);
 		return rv;
-	}
-
-	public int getSteps()
-	{
-		return steps;
 	}
 
 	public void setIntent(PendingIntent pi)

@@ -8,5 +8,10 @@
 	android:defaultValue="1"></ListPreference>
 	<RingtonePreference android:key="alarm_tone"
 		android:summary="@string/tone_summary" android:title="@string/tone_title"></RingtonePreference>
+		
+	<EditTextPreference android:key="steps"
+	android:summary="@string/steps_summary"
+	android:title="@string/steps_title"
+	android:inputType="number"></EditTextPreference>
 
 </PreferenceScreen>

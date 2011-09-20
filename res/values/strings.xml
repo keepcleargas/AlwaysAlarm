@@ -27,4 +27,6 @@
     <string name="saturday_short">SAT</string>
     <string name="sunday_short">SUN</string>
     <string name="steps">Steps</string>
+    <string name="steps_title">Number of steps</string>
+    <string name="steps_summary">This is the number of steps required before the alarm will turn off. The default is 20.</string>
 </resources>

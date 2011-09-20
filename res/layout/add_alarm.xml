@@ -12,21 +12,9 @@
 			android:layout_marginBottom="10dp"></TextView>
 		<TimePicker android:id="@+id/timePicker1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:layout_gravity="center"></TimePicker>
-		<LinearLayout android:id="@+id/linearLayout1"
-			android:layout_height="wrap_content" android:layout_width="fill_parent">
-			<TextView android:id="@+id/textView1" android:layout_height="wrap_content"
-				android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium"
-				android:layout_marginRight="5dp"
-				android:layout_marginLeft="3dp" android:text="@string/steps">
-			</TextView>
-			<EditText android:layout_height="wrap_content" android:id="@+id/editText1"
-				android:layout_width="wrap_content" android:layout_weight="1"
-				android:inputType="number"
-				android:layout_marginRight="5dp">
-				<requestFocus></requestFocus>
-			</EditText>
-		</LinearLayout>
+			android:layout_gravity="center"> 
+		</TimePicker>
+		
 		<CheckBox android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:id="@+id/checkBox1"
 			android:text="@string/monday"></CheckBox>

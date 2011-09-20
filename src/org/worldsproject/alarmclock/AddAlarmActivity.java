@@ -36,8 +36,6 @@ public class AddAlarmActivity extends Activity
     	CheckBox sunday = (CheckBox)findViewById(R.id.checkBox7);
         
         TimePicker time = (TimePicker)findViewById(R.id.timePicker1);
-        
-        EditText steps = (EditText)findViewById(R.id.editText1);
     	
     	Intent myIntent = new Intent(AddAlarmActivity.this, AlwaysAlarmActivity.class);
     	myIntent.putExtra("mode", "new_alarm");
@@ -52,15 +50,6 @@ public class AddAlarmActivity extends Activity
     	
     	myIntent.putExtra("hour", time.getCurrentHour());
     	myIntent.putExtra("minute", time.getCurrentMinute());
-    	
-    	try
-    	{
-    		myIntent.putExtra("steps", Integer.parseInt(steps.getText().toString()));
-    	}
-    	catch(NumberFormatException e)
-    	{
-    		myIntent.putExtra("steps", 1);
-    	}
     	
     	AddAlarmActivity.this.startActivity(myIntent);
     }

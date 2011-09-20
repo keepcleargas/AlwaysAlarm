@@ -12,10 +12,8 @@ public class AlarmReceiver extends BroadcastReceiver
 	public void onReceive(Context context, Intent arg1)
 	{
 		Toast.makeText(context, "Here!", Toast.LENGTH_SHORT).show();
-		int dis = arg1.getIntExtra("steps", 1);
 		Intent myIntent = new Intent(context, AlarmRinging.class);
 		myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		myIntent.putExtra("steps", dis);
 		context.startActivity(myIntent);
 	}
 }
