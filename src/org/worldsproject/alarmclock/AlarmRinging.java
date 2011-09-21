@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -72,10 +73,12 @@ public class AlarmRinging extends Activity implements SensorEventListener
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		SensorManager mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE); 
+		mSensorManager.registerListener(this,mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST);
 		
 		TextView tv = (TextView)this.findViewById(R.id.textView3);
 		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-		steps = pref.getInt("steps", 20);
+		steps = Integer.parseInt(pref.getString("steps", "20"));
 		tv.setText("" + steps);
 	}
 
@@ -101,6 +104,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 				int j = (sensor.getType() == Sensor.TYPE_ACCELEROMETER) ? 1 : 0;
 				if (j == 1) 
 				{
+					Toast.makeText(getBaseContext(), "On Sensor Changed", Toast.LENGTH_SHORT).show();
 					float vSum = 0;
 					for (int i=0 ; i<3 ; i++) 
 					{
