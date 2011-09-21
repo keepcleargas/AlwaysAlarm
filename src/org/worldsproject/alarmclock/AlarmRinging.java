@@ -1,17 +1,14 @@
 package org.worldsproject.alarmclock;
 
-import java.io.IOException;
-
 import android.app.Activity;
-import android.content.Context;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AlarmRinging extends Activity implements SensorEventListener
@@ -32,42 +29,54 @@ public class AlarmRinging extends Activity implements SensorEventListener
 
 	public void onCreate(Bundle savedInstance)
 	{
+		super.onCreate(savedInstance);
 		setContentView(R.layout.alarm_ringing);
 
-		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM); 
-		mMediaPlayer = new MediaPlayer();
-		try
-		{
-			mMediaPlayer.setDataSource(this, alert);
-			final AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-			if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM) != 0) 
-			{
-				mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
-				mMediaPlayer.setLooping(true);
-				mMediaPlayer.prepare();
-				mMediaPlayer.start();
-			}
-		}
-		catch (IllegalArgumentException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (SecurityException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (IllegalStateException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+//		if(alert == null)
+//		{
+//			alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+//		}
+//		mMediaPlayer = new MediaPlayer();
+//		try
+//		{
+//			Log.v("TIM", "MediaPlayer is null: " + (mMediaPlayer == null));
+//			Log.v("TIM", "Alert is null: " + (alert == null));
+//			mMediaPlayer.setDataSource(this, alert);
+//			final AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+//			if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM) != 0) 
+//			{
+//				mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+//				mMediaPlayer.setLooping(true);
+//				mMediaPlayer.prepare();
+//				mMediaPlayer.start();
+//			}
+//		}
+//		catch (IllegalArgumentException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		catch (SecurityException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		catch (IllegalStateException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		catch (IOException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		TextView tv = (TextView)this.findViewById(R.id.textView3);
+		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		steps = pref.getInt("steps", 20);
+		tv.setText("" + steps);
 	}
 
 	@Override

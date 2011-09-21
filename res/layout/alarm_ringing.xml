@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:orientation="vertical"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:gravity="center">
-    <TextView android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:id="@+id/textView1" android:layout_width="wrap_content" android:text="@string/alarm_ringing_title"></TextView>
-    <TextView android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView2" android:layout_width="wrap_content" android:text="@string/alarm_ringing_message"></TextView>
-    <TextView android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge" android:id="@+id/textView3" android:layout_width="wrap_content"></TextView>
-    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:gravity="center">
+	<com.google.ads.AdView android:id="@+id/adView"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		ads:adUnitId="a14e1a859cbb3fb" ads:adSize="BANNER" ads:loadAdOnCreate="true"
+		ads:test="true" />
+	<TextView android:text="TextView" android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge" android:id="@+id/textView3"
+		android:layout_width="wrap_content"></TextView>
+
 </LinearLayout>
