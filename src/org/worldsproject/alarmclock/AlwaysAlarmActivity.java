@@ -7,9 +7,7 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.View;
@@ -23,7 +21,6 @@ public class AlwaysAlarmActivity extends Activity
 	public static ArrayList<Alarm> alarms = new ArrayList<Alarm>();
 
 	public static LinearLayout root;
-	private SharedPreferences pref;
 	
 	private final long MSINWEEK = 604800000;
 
@@ -34,7 +31,6 @@ public class AlwaysAlarmActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		pref = PreferenceManager.getDefaultSharedPreferences(this);
 		Intent intent = getIntent();
 		String mode = intent.getStringExtra("mode");
 
