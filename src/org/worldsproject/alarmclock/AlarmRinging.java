@@ -9,8 +9,10 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class AlarmRinging extends Activity implements SensorEventListener
 {
@@ -28,6 +30,9 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		setContentView(R.layout.alarm_ringing);
 		mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE); 
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 
 		//		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 		//		if(alert == null)
@@ -37,8 +42,6 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		//		mMediaPlayer = new MediaPlayer();
 		//		try
 		//		{
-		//			Log.v("TIM", "MediaPlayer is null: " + (mMediaPlayer == null));
-		//			Log.v("TIM", "Alert is null: " + (alert == null));
 		//			mMediaPlayer.setDataSource(this, alert);
 		//			final AudioManager audioManager = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
 		//			if (audioManager.getStreamVolume(AudioManager.STREAM_ALARM) != 0) 

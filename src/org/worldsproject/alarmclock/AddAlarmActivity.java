@@ -1,15 +1,29 @@
 package org.worldsproject.alarmclock;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnMultiChoiceClickListener;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
-public class AddAlarmActivity extends Activity
+public class AddAlarmActivity extends Activity implements OnMultiChoiceClickListener, OnClickListener
 {	
+	private boolean monday = false;
+	private boolean tuesday = false;
+	private boolean wednesday = false;
+	private boolean thursday = false;
+	private boolean friday = false;
+	private boolean saturday = false;
+	private boolean sunday = false;
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -23,26 +37,18 @@ public class AddAlarmActivity extends Activity
     
     public void alarmAdd(View v)
     {
-    	CheckBox monday = (CheckBox)findViewById(R.id.checkBox1);
-    	CheckBox tuesday = (CheckBox)findViewById(R.id.checkBox2);
-    	CheckBox wednesday = (CheckBox)findViewById(R.id.checkBox3);
-    	CheckBox thursday = (CheckBox)findViewById(R.id.checkBox4);
-    	CheckBox friday = (CheckBox)findViewById(R.id.checkBox5);
-    	CheckBox saturday = (CheckBox)findViewById(R.id.checkBox6);
-    	CheckBox sunday = (CheckBox)findViewById(R.id.checkBox7);
-        
         TimePicker time = (TimePicker)findViewById(R.id.timePicker1);
     	
     	Intent myIntent = new Intent(AddAlarmActivity.this, AlwaysAlarmActivity.class);
     	myIntent.putExtra("mode", "new_alarm");
     	
-    	myIntent.putExtra("monday", monday.isChecked());
-    	myIntent.putExtra("tuesday", tuesday.isChecked());
-    	myIntent.putExtra("wednesday", wednesday.isChecked());
-    	myIntent.putExtra("thursday", thursday.isChecked());
-    	myIntent.putExtra("friday", friday.isChecked());
-    	myIntent.putExtra("saturday", saturday.isChecked());
-    	myIntent.putExtra("sunday", sunday.isChecked());
+    	myIntent.putExtra("monday", monday);
+    	myIntent.putExtra("tuesday", tuesday);
+    	myIntent.putExtra("wednesday", wednesday);
+    	myIntent.putExtra("thursday", thursday);
+    	myIntent.putExtra("friday", friday);
+    	myIntent.putExtra("saturday", saturday);
+    	myIntent.putExtra("sunday", sunday);
     	
     	myIntent.putExtra("hour", time.getCurrentHour());
     	myIntent.putExtra("minute", time.getCurrentMinute());
@@ -55,4 +61,77 @@ public class AddAlarmActivity extends Activity
     	Intent myIntent = new Intent(AddAlarmActivity.this, AlwaysAlarmActivity.class);
     	AddAlarmActivity.this.startActivity(myIntent);
     }
+    
+    public void addDays(View v)
+    {
+    	Log.v("TIM", "Button clicked");
+    	String[] days = {this.getString(R.string.monday),
+    	this.getString(R.string.tuesday),
+    	this.getString(R.string.wednesday),
+    	this.getString(R.string.thursday),
+    	this.getString(R.string.friday),
+    	this.getString(R.string.saturday),
+    	this.getString(R.string.sunday)};
+    	
+    	AlertDialog.Builder adb = new AlertDialog.Builder(this);
+    	adb.setTitle(R.string.repeat_days);
+    	adb.setMultiChoiceItems(days, null, this);
+    	adb.setNeutralButton(this.getString(R.string.close), this);
+    	adb.show();
+    	
+    }
+
+	@Override
+	public void onClick(DialogInterface arg0, int w, boolean v)
+	{
+		if(w == 0)
+		{
+			monday = v;
+		}
+		else if(w == 1)
+		{
+			tuesday = v;
+		}
+		else if(w == 2)
+		{
+			wednesday = v;
+		}
+		else if(w == 3)
+		{
+			thursday = v;
+		}
+		else if(w == 4)
+		{
+			friday = v;
+		}
+		else if(w == 5)
+		{
+			saturday = v;
+		}
+		else
+		{
+			sunday = v;
+		}
+	}
+
+	@Override
+	public void onClick(DialogInterface arg0, int arg1)
+	{
+		((AlertDialog)arg0).dismiss();
+		
+		if(monday)
+			((TextView)findViewById(R.id.view_monday)).setTextColor(Color.MAGENTA);
+		if(tuesday)
+			((TextView)findViewById(R.id.view_tuesday)).setTextColor(Color.MAGENTA);
+		if(wednesday)
+			((TextView)findViewById(R.id.view_wednesday)).setTextColor(Color.MAGENTA);
+		if(thursday)
+			((TextView)findViewById(R.id.view_thursday)).setTextColor(Color.MAGENTA);
+		if(friday)
+			((TextView)findViewById(R.id.view_friday)).setTextColor(Color.MAGENTA);
+		if(saturday)
+			((TextView)findViewById(R.id.view_saturday)).setTextColor(Color.MAGENTA);
+		if(sunday)
+			((TextView)findViewById(R.id.view_sunday)).setTextColor(Color.MAGENTA);
+	}
 }

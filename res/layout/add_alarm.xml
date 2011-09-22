@@ -1,85 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/scroll" android:layout_width="fill_parent"
-	android:layout_below="@+id/textView1" android:layout_centerVertical="true"
-	android:gravity="center" android:layout_height="wrap_content"
-	android:background="@drawable/striprepeat">
-	<LinearLayout android:orientation="vertical"
-		android:layout_width="fill_parent" android:layout_height="fill_parent">
-		<TextView android:id="@+id/textView2" android:layout_height="wrap_content"
-			android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge"
-			android:text="@string/setup_alarm" android:layout_gravity="center"
-			android:layout_marginBottom="10dp" android:textSize="18dp">
-		</TextView>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="@drawable/striprepeat" android:orientation="vertical"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<TextView android:id="@+id/textView2" android:layout_height="wrap_content"
+		android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/setup_alarm" android:layout_gravity="center"
+		android:layout_marginBottom="10dp" android:textSize="18dp">
+	</TextView>
 
-		<TextView android:id="@+id/add_alarm_header1"
-			android:layout_height="wrap_content" android:layout_width="wrap_content"
-			android:text="@string/aa_header1" android:layout_gravity="center">
-		</TextView>
-		<TimePicker android:id="@+id/timePicker1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:layout_gravity="center">
-		</TimePicker>
-		<TextView android:id="@+id/add_alarm_header1"
-			android:layout_height="wrap_content" android:layout_width="wrap_content"
-			android:text="@string/aa_header2" android:layout_gravity="center"
-			android:layout_marginTop="10dp"
-			android:textSize="18dp">
-		</TextView>
+	<TextView android:id="@+id/add_alarm_header1"
+		android:layout_height="wrap_content" android:layout_width="wrap_content"
+		android:text="@string/aa_header1" android:layout_gravity="center">
+	</TextView>
+	<TimePicker android:id="@+id/timePicker1"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center">
+	</TimePicker>
 
-		<TableLayout android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:layout_gravity="center_horizontal" >
-			<TableRow>
-				<CheckBox android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:id="@+id/checkBox1"
-					android:text="@string/monday"></CheckBox>
-			</TableRow>
-			<TableRow>
-				<CheckBox android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:id="@+id/checkBox2"
-					android:text="@string/tuesday"></CheckBox>
-			</TableRow>
-			<TableRow>
-				<CheckBox android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:id="@+id/checkBox3"
-					android:text="@string/wednesday"></CheckBox>
-			</TableRow>
-			<TableRow>
-				<CheckBox android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:id="@+id/checkBox4"
-					android:text="@string/thursday"></CheckBox>
-			</TableRow>
-			<TableRow>
-				<CheckBox android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:id="@+id/checkBox5"
-					android:text="@string/friday"></CheckBox>
-			</TableRow>
-			<TableRow>
-				<CheckBox android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:id="@+id/checkBox6"
-					android:text="@string/saturday"></CheckBox>
-			</TableRow>
-			<TableRow>
-				<CheckBox android:layout_height="wrap_content"
-					android:layout_width="wrap_content" android:id="@+id/checkBox7"
-					android:text="@string/sunday"></CheckBox>
-			</TableRow>
-		</TableLayout>
-		<LinearLayout android:id="@+id/bottomButtons"
-			android:layout_height="wrap_content" android:layout_width="fill_parent"
-			android:layout_centerHorizontal="true" android:gravity="bottom">
+	<Button android:text="@string/repeat_days" android:onClick="addDays"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
 
-			<Button android:layout_height="wrap_content" android:text="@string/addAlarm"
-				android:id="@+id/button1" android:layout_width="0px"
-				android:layout_weight="1" android:drawableTop="@drawable/star"
-				android:onClick="alarmAdd">
-			</Button>
-			<Button android:layout_width="0px" android:layout_height="wrap_content"
-				android:id="@+id/button2" android:layout_centerVertical="true"
-				android:layout_alignParentRight="true" android:layout_weight="1"
-				android:text="@string/cancel" android:drawableTop="@drawable/delete"
-				android:onClick="cancelAdd">
-			</Button>
-		</LinearLayout>
+	<LinearLayout android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center">
+		<TextView android:id="@+id/view_monday" android:textSize="15dp"
+			android:layout_marginRight="4dp" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/monday_short"></TextView>
+		<TextView android:id="@+id/view_tuesday" android:textSize="15dp"
+			android:layout_marginRight="4dp" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/tuesday_short"></TextView>
+		<TextView android:id="@+id/view_wednesday" android:textSize="15dp"
+			android:layout_marginRight="4dp" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/wednesday_short"></TextView>
+		<TextView android:id="@+id/view_thursday" android:textSize="15dp"
+			android:layout_marginRight="4dp" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/thursday_short"></TextView>
+		<TextView android:id="@+id/view_friday" android:textSize="15dp"
+			android:layout_marginRight="4dp" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/friday_short"></TextView>
+		<TextView android:id="@+id/view_saturday" android:textSize="15dp"
+			android:layout_marginRight="4dp" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/saturday_short"></TextView>
+		<TextView android:id="@+id/view_sunday" android:textSize="15dp"
+			android:layout_marginRight="4dp" android:layout_height="wrap_content"
+			android:layout_width="wrap_content" android:textColor="#2F4F4F"
+			android:text="@string/sunday_short"></TextView>
 	</LinearLayout>
-</ScrollView>
+	<LinearLayout android:id="@+id/bottomButtons"
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
+		android:layout_centerHorizontal="true">
+
+		<Button android:layout_height="wrap_content" android:text="@string/addAlarm"
+			android:id="@+id/button1" android:layout_width="0px"
+			android:layout_weight="1" android:drawableTop="@drawable/star"
+			android:onClick="alarmAdd">
+		</Button>
+		<Button android:layout_width="0px" android:layout_height="wrap_content"
+			android:id="@+id/button2" android:layout_centerVertical="true"
+			android:layout_alignParentRight="true" android:layout_weight="1"
+			android:text="@string/cancel" android:drawableTop="@drawable/delete"
+			android:onClick="cancelAdd">
+		</Button>
+	</LinearLayout>
+</LinearLayout>
