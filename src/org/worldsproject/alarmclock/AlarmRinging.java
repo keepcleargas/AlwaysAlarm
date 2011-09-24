@@ -158,7 +158,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 			rightDir++;
 		speed = Math.abs(speed);
 		
-		if(speed > .85 && rightDir > 1 && speed < 1.8)
+		if(speed > .80 && rightDir > 1 && speed < 2)
 		{
 			steps--;
 
