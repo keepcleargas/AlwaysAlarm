@@ -21,8 +21,7 @@
 		android:layout_width="fill_parent" android:layout_height="wrap_content"></Button>
 
 	<LinearLayout android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center">
+		android:layout_height="wrap_content" android:layout_gravity="center">
 		<TextView android:id="@+id/view_monday" android:textSize="15dp"
 			android:layout_marginRight="4dp" android:layout_height="wrap_content"
 			android:layout_width="wrap_content" android:textColor="#2F4F4F"
@@ -53,8 +52,8 @@
 			android:text="@string/sunday_short"></TextView>
 	</LinearLayout>
 	<LinearLayout android:id="@+id/bottomButtons"
-		android:layout_height="wrap_content" android:layout_width="fill_parent"
-		android:layout_centerHorizontal="true">
+		android:layout_width="fill_parent"
+		android:gravity="bottom" android:layout_gravity="center" android:layout_height="fill_parent">
 
 		<Button android:layout_height="wrap_content" android:text="@string/addAlarm"
 			android:id="@+id/button1" android:layout_width="0px"
