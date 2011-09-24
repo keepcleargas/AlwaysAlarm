@@ -14,6 +14,8 @@ import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -25,6 +27,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	private MediaPlayer mMediaPlayer;
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
+	private WakeLock wl;
 
 	private TextView tv;
 
@@ -32,7 +35,11 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	{
 		super.onCreate(savedInstance);
 		
-		if(savedInstance.containsKey("steps"))
+		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK|PowerManager.ON_AFTER_RELEASE, "Alarm Ringing");
+		wl.acquire();
+		
+		if(savedInstance != null && savedInstance.containsKey("steps"))
 		{
 			steps = savedInstance.getInt("steps");
 		}
@@ -40,9 +47,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		setContentView(R.layout.alarm_ringing);
 		mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE); 
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
-		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 
 		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
 		if(alert == null)
@@ -93,7 +98,24 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	protected void onResume() 
 	{
 		super.onResume();
+		
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+		mMediaPlayer.setLooping(true);
+		try
+		{
+			mMediaPlayer.prepare();
+		}
+		catch (IllegalStateException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mMediaPlayer.start();
 	}
 
 	protected void onPause() 
@@ -141,7 +163,11 @@ public class AlarmRinging extends Activity implements SensorEventListener
 			steps--;
 
 			if(steps <= 0)
+			{
+				wl.release();
+				this.mMediaPlayer.stop();
 				this.finish();
+			}
 
 			tv.setText("" + steps);
 		}

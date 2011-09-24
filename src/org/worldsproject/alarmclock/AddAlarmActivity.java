@@ -54,6 +54,7 @@ public class AddAlarmActivity extends Activity implements OnMultiChoiceClickList
     	myIntent.putExtra("minute", time.getCurrentMinute());
     	
     	AddAlarmActivity.this.startActivity(myIntent);
+    	this.finish();
     }
     
     public void cancelAdd(View v)
