@@ -35,15 +35,6 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	{
 		super.onCreate(savedInstance);
 		
-		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK|PowerManager.ON_AFTER_RELEASE, "Alarm Ringing");
-		wl.acquire();
-		
-		if(savedInstance != null && savedInstance.containsKey("steps"))
-		{
-			steps = savedInstance.getInt("steps");
-		}
-		
 		setContentView(R.layout.alarm_ringing);
 		mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE); 
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -100,41 +91,37 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		super.onResume();
 		
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-		mMediaPlayer.setLooping(true);
-		try
-		{
-			mMediaPlayer.prepare();
-		}
-		catch (IllegalStateException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		mMediaPlayer.start();
 	}
 
 	protected void onPause() 
 	{
 		super.onPause();
 		mSensorManager.unregisterListener(this);
-		mMediaPlayer.stop();
 	}
 
 	@Override
-	public void onAccuracyChanged(Sensor sensor, int accuracy)
-	{
-		// TODO Auto-generated method stub
-
-	}
+	public void onAccuracyChanged(Sensor sensor, int accuracy){}
 	
 	protected void onSaveInstanceState(Bundle b)
 	{
+		super.onSaveInstanceState(b);
 		b.putInt("steps", steps);
+	}
+	
+	protected void onRestoreInstanceState(Bundle b)
+	{
+		super.onRestoreInstanceState(b);
+		steps = b.getInt("steps");
+		tv.setText("" + steps);
+	}
+	
+	protected void onStart()
+	{
+		super.onStart();
+		
+		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+		wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK|PowerManager.ON_AFTER_RELEASE, "Alarm Ringing");
+		wl.acquire();
 	}
 
 	@Override
@@ -144,28 +131,18 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		float y = event.values[1];
 		float z = event.values[2];
 
-		double xs = Math.abs(Math.sqrt(x*x));
-		double ys = Math.abs(Math.sqrt(y*y));
-		double zs = Math.abs(Math.sqrt(z*z));
 		double speed = (Math.sqrt(x*x + y*y + z*z) - SensorManager.GRAVITY_EARTH);
 
-		int rightDir = 0;
-		if(xs > 0.5)
-			rightDir++;
-		if(ys > 0.5)
-			rightDir++;
-		if(zs > 0.5)
-			rightDir++;
 		speed = Math.abs(speed);
 		
-		if(speed > .80 && rightDir > 1 && speed < 2)
+		if(speed > .75 && speed < 2.1)
 		{
 			steps--;
 
 			if(steps <= 0)
 			{
-				wl.release();
 				this.mMediaPlayer.stop();
+				wl.release();
 				this.finish();
 			}
 
