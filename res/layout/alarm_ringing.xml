@@ -6,8 +6,7 @@
 	android:id="@+id/ringing_linear">
 	<com.google.ads.AdView android:id="@+id/adView"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		ads:adUnitId="a14e1a859cbb3fb" ads:adSize="BANNER" ads:loadAdOnCreate="true"
-		ads:test="true" />
+		ads:adUnitId="a14e1a859cbb3fb" ads:adSize="BANNER" ads:loadAdOnCreate="true"/>
 	<TextView android:text="TextView" android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceLarge" android:id="@+id/textView3"
 		android:layout_width="wrap_content"

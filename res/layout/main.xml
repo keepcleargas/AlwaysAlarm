@@ -35,8 +35,7 @@ xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
                          android:layout_height="wrap_content"
                          ads:adUnitId="a14e1a859cbb3fb"
                          ads:adSize="BANNER"
-                         ads:loadAdOnCreate="true"
-                         ads:test="true"/>
+                         ads:loadAdOnCreate="true"/>
                          
 		<LinearLayout android:id="@+id/relativeLayout2"
 			android:layout_height="wrap_content" android:layout_width="fill_parent"

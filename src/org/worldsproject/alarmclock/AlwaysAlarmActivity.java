@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-public class AlwaysAlarmActivity extends Activity 
+public class AlwaysAlarmActivity extends Activity
 {
 	public static ArrayList<Alarm> alarms = new ArrayList<Alarm>();
 
@@ -33,7 +33,7 @@ public class AlwaysAlarmActivity extends Activity
 
 		Intent intent = getIntent();
 		String mode = intent.getStringExtra("mode");
-
+		
 		root = (LinearLayout)findViewById(R.id.alarms);
 		if(root != null)
 			root.removeAllViews();

@@ -40,7 +40,10 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 
-		Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
+		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		
+		Uri alert = Uri.parse(pref.getString("alarm_tone", "DEFAULT_TONE"));
+		
 		if(alert == null)
 		{
 			alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
@@ -81,7 +84,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 
 
 		tv = (TextView)this.findViewById(R.id.textView3);
-		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		
 		steps = Integer.parseInt(pref.getString("steps", "20"));
 		tv.setText("" + steps);
 	}
