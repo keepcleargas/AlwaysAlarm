@@ -89,50 +89,6 @@ public class AlwaysAlarmActivity extends Activity
 			return false;
 		}
 
-		Calendar cur = Calendar.getInstance();
-		long diff = cal.get(0).getTimeInMillis() - cur.getTimeInMillis();
-
-		int seconds = (int)(diff/1000)%60;
-		int minutes = (int)(diff/60000)%60;
-		int hours = (int)(diff/1440000)%24;
-		int days = (int)(diff/86400000);
-
-		StringBuffer buf = new StringBuffer("Next alarm in\n");
-
-		if(days > 0 && hours > 0 && minutes > 0)
-		{
-			buf.append(dayFormat(days));
-			buf.append(hourFormat(hours));
-			buf.append(minuteFormat(minutes));
-			buf.append(secondFormat(seconds));
-		}
-		else
-		{
-			if(hours > 0 && minutes > 0)
-			{
-				buf.append(hourFormat(hours));
-				buf.append(minuteFormat(minutes));
-				buf.append(secondFormat(seconds));
-			}
-			else
-			{
-				if(minutes > 0)
-				{
-					buf.append(minuteFormat(minutes));
-					buf.append(secondFormat(seconds));
-				}
-				else
-				{
-					buf.append(secondFormat(seconds));
-				}
-			}
-		}
-
-		Toast toast = Toast.makeText(this, buf, Toast.LENGTH_LONG);
-		((TextView)((LinearLayout)toast.getView()).getChildAt(0))
-	    .setGravity(Gravity.CENTER_HORIZONTAL);
-		toast.show();
-
 		Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
 		
 		PendingIntent sender = PendingIntent.getBroadcast(this, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -181,37 +137,5 @@ public class AlwaysAlarmActivity extends Activity
 	{
 		Intent myIntent = new Intent(AlwaysAlarmActivity.this, AlarmPreferences.class);
 		AlwaysAlarmActivity.this.startActivity(myIntent);
-	}
-
-	private String secondFormat(int seconds)
-	{
-		if(seconds != 1)
-			return seconds + " seconds.";
-		else
-			return seconds + " second.";
-	}
-
-	private String minuteFormat(int minutes)
-	{
-		if(minutes != 1)
-			return minutes + " minutes\n";
-		else
-			return minutes + " minute\n";
-	}
-
-	private String hourFormat(int hours)
-	{
-		if(hours != 1)
-			return hours + " hours\n";
-		else
-			return hours + " hour\n";
-	}
-
-	private String dayFormat(int days)
-	{
-		if(days != 1)
-			return days + " days\n";
-		else
-			return days + " day\n";
 	}
 }
