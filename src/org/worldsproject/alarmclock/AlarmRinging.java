@@ -101,6 +101,12 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		super.onPause();
 		mSensorManager.unregisterListener(this);
 	}
+	
+	protected void onStop()
+	{
+		super.onStop();
+		this.mMediaPlayer.stop();
+	}
 
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy){}
