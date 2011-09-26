@@ -202,7 +202,10 @@ public class Alarm extends LinearLayout
 					}
 				});
 
-		return ret;
+		if(ret.isEmpty())
+			return null;
+		else
+			return ret;
 	}
 
 	private Calendar getNext(int day, int hour, int minute)

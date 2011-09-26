@@ -56,6 +56,9 @@ public class AlwaysAlarmActivity extends Activity
 		
 		for(Alarm v:alarms)
 		{
+			if(v.nextAlarmEvent() == null)
+				continue;
+			
 			try
 			{
 				root.addView(v);
