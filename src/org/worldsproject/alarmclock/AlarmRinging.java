@@ -52,6 +52,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 
 	private TextView tv;
 
+	private boolean flop = true;
 	public void onCreate(Bundle savedInstance)
 	{
 		super.onCreate(savedInstance);
@@ -168,11 +169,24 @@ public class AlarmRinging extends Activity implements SensorEventListener
 
 		double speed = (Math.sqrt(x*x + y*y + z*z) - SensorManager.GRAVITY_EARTH);
 
-		speed = Math.abs(speed);
+		x = Math.abs(x);
+		y = Math.abs(y);
+		z = Math.abs(z);
 		
-		if(speed > .75 && speed < 2.1)
+		int comb = 0;
+		if(x > 0.25)
+			comb++;
+		if(y > 0.25)
+			comb++;
+		if(z > 0.25)
+			comb++;
+		
+		double abspeed = Math.abs(speed);
+		
+		if(abspeed > 0.5 && abspeed < 2.3 && comb > 1 && (speed > 0 == flop))
 		{
 			steps--;
+			flop = !flop;
 
 			if(steps <= 0)
 			{
