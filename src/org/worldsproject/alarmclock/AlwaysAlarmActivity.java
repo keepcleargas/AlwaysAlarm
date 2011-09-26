@@ -129,7 +129,7 @@ public class AlwaysAlarmActivity extends Activity
 				buf.append(diffMinutes + " minutes\n");
 			buf.append(diffSeconds + " seconds.");
 			
-			Toast.makeText(getBaseContext(), buf.toString(), Toast.LENGTH_LONG);
+			Toast.makeText(getBaseContext(), buf.toString(), Toast.LENGTH_LONG).show();
 		}
 
 		Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
