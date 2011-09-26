@@ -34,6 +34,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.os.Vibrator;
 import android.os.PowerManager.WakeLock;
 import android.preference.PreferenceManager;
 import android.view.WindowManager;
@@ -47,6 +48,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
 	private WakeLock wl;
+	private Vibrator vib;
 
 	private TextView tv;
 
@@ -106,6 +108,8 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		
 		steps = Integer.parseInt(pref.getString("steps", "20"));
 		tv.setText("" + steps);
+		
+		vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 	}
 
 	protected void onResume() 
@@ -113,6 +117,8 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		super.onResume();
 		
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+		long[] pat = {100, 100};
+		vib.vibrate(pat, 0);
 	}
 
 	protected void onPause() 
@@ -124,6 +130,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	protected void onStop()
 	{
 		super.onStop();
+		vib.cancel();
 		this.mMediaPlayer.stop();
 	}
 
@@ -170,6 +177,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 			if(steps <= 0)
 			{
 				this.mMediaPlayer.stop();
+				vib.cancel();
 				wl.release();
 				this.finish();
 			}
