@@ -84,7 +84,6 @@ public class AddAlarmActivity extends Activity implements OnMultiChoiceClickList
     
     public void addDays(View v)
     {
-    	Log.v("TIM", "Button clicked");
     	String[] days = {this.getString(R.string.monday),
     	this.getString(R.string.tuesday),
     	this.getString(R.string.wednesday),
