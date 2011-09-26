@@ -107,6 +107,30 @@ public class AlwaysAlarmActivity extends Activity
 			Toast.makeText(getBaseContext(), "Alarm exists in past.\n  No alarm added", Toast.LENGTH_LONG).show();
 			return false;
 		}
+		else
+		{
+			Calendar now = Calendar.getInstance();
+			long n = now.getTimeInMillis();
+			long l = cal.get(0).getTimeInMillis();
+			
+			long diff = l - n;
+			
+			long diffSeconds = diff / 1000;
+			long diffMinutes = diff / (60 * 1000);
+			long diffHours = diff / (60 * 60 * 1000);
+			long diffDays = diff / (24 * 60 * 60 * 1000);
+			
+			StringBuffer buf = new StringBuffer("Next Alarm in\n");
+			if(diffDays > 0)
+				buf.append(diffDays + " days\n");
+			if(diffHours > 0)
+				buf.append(diffHours + " hours\n");
+			if(diffMinutes > 0)
+				buf.append(diffMinutes + " minutes\n");
+			buf.append(diffSeconds + " seconds.");
+			
+			Toast.makeText(getBaseContext(), buf.toString(), Toast.LENGTH_LONG);
+		}
 
 		Intent alarmIntent = new Intent(AlwaysAlarmActivity.this, AlarmReceiver.class);
 		
