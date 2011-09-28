@@ -30,4 +30,7 @@
     <string name="aa_header1">Time Alarm Goes Off</string>
     <string name="repeat_days">Days Alarm Repeats</string>
     <string name="close">Close</string>
+    <string name="vibrate_title">Does Alarm Vibrate?</string>
+    <string name="vibrate_on">Alarm does vibrate</string>
+    <string name="vibrate_off">Alarm does NOT vibrate</string>
 </resources>

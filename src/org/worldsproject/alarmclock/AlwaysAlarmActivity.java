@@ -16,6 +16,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with AlwaysAlarm.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.worldsproject.alarmclock;
 
 import java.util.ArrayList;
@@ -115,10 +116,10 @@ public class AlwaysAlarmActivity extends Activity
 			
 			long diff = l - n;
 			
-			long diffSeconds = diff % 1000;
-			long diffMinutes = diff % (60 * 1000);
-			long diffHours = diff % (60 * 60 * 1000);
-			long diffDays = diff % (24 * 60 * 60 * 1000);
+			long diffSeconds = diff / 1000;
+			long diffMinutes = diff / (60 * 1000);
+			long diffHours = diff / (60 * 60 * 1000);
+			long diffDays = diff / (24 * 60 * 60 * 1000);
 			
 			StringBuffer buf = new StringBuffer("Next Alarm in\n");
 			if(diffDays > 0)

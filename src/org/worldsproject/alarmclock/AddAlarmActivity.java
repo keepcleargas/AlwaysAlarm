@@ -28,7 +28,6 @@ import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.TimePicker;

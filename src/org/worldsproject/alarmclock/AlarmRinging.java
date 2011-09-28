@@ -53,6 +53,9 @@ public class AlarmRinging extends Activity implements SensorEventListener
 	private TextView tv;
 
 	private boolean flop = true;
+	
+	private boolean shouldVibrate = true;
+	
 	public void onCreate(Bundle savedInstance)
 	{
 		super.onCreate(savedInstance);
@@ -63,6 +66,7 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON|WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
 
 		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		shouldVibrate = pref.getBoolean("vibrate", true);
 		
 		Uri alert = Uri.parse(pref.getString("alarm_tone", "DEFAULT_TONE"));
 		
@@ -118,8 +122,12 @@ public class AlarmRinging extends Activity implements SensorEventListener
 		super.onResume();
 		
 		mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-		long[] pat = {100, 100};
-		vib.vibrate(pat, 0);
+		
+		if(shouldVibrate)
+		{
+			long[] pat = {100, 100};
+			vib.vibrate(pat, 0);
+		}
 	}
 
 	protected void onPause() 

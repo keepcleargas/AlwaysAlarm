@@ -89,6 +89,9 @@ public final class R {
         public static final int tone_title=0x7f05000e;
         public static final int tuesday=0x7f050005;
         public static final int tuesday_short=0x7f050012;
+        public static final int vibrate_off=0x7f050020;
+        public static final int vibrate_on=0x7f05001f;
+        public static final int vibrate_title=0x7f05001e;
         public static final int wednesday=0x7f050006;
         public static final int wednesday_short=0x7f050013;
     }

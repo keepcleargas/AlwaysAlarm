@@ -7,5 +7,11 @@
 	android:summary="@string/steps_summary"
 	android:title="@string/steps_title"
 	android:inputType="number"></EditTextPreference>
+	
+	<CheckBoxPreference android:key="vibrate"
+	android:title="@string/vibrate_title"
+	android:summaryOn="@string/vibrate_on"
+	android:summaryOff="@string/vibrate_off"
+	></CheckBoxPreference>
 
 </PreferenceScreen>
