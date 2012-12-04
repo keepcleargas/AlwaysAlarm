@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+`<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-	android:id="@+id/relativeLayout1" android:layout_width="fill_parent"
+    android:id="@+id/relativeLayout1" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:gravity="center"
 	android:background="@drawable/striprepeat">
 
@@ -23,39 +23,24 @@ xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
 			android:layout_height="wrap_content">
 		</LinearLayout>
 	</ScrollView>
-
-	<RelativeLayout android:id="@+id/bottomStuff"
-	android:layout_height="wrap_content" android:layout_width="fill_parent"
+                         
+	<LinearLayout android:id="@+id/relativeLayout2"
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
 		android:layout_alignParentBottom="true"
-		android:layout_centerHorizontal="true" android:layout_marginBottom="12dp"
+		android:layout_centerHorizontal="true"
 		android:gravity="bottom">
 
-<com.google.ads.AdView android:id="@+id/adView"
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         ads:adUnitId="a14e1a859cbb3fb"
-                         ads:adSize="BANNER"
-                         ads:loadAdOnCreate="true"/>
-                         
-		<LinearLayout android:id="@+id/relativeLayout2"
-			android:layout_height="wrap_content" android:layout_width="fill_parent"
-			android:layout_below="@+id/adView"
-			android:layout_centerHorizontal="true"
-			android:gravity="bottom">
+		<Button android:layout_height="wrap_content" android:text="@string/addAlarm"
+			android:id="@+id/button1" android:layout_width="0px"
+			android:layout_weight="1" android:drawableTop="@drawable/plus"
+			android:onClick="addAlarm">
+		</Button>
+		<Button android:layout_width="0px" android:layout_height="wrap_content"
+			android:id="@+id/button2" android:layout_centerVertical="true"
+			android:layout_alignParentRight="true" android:layout_weight="1"
+			android:text="@string/settings" android:drawableTop="@drawable/preferences"
+			android:onClick="showPreferences">
+		</Button>
 
-			<Button android:layout_height="wrap_content" android:text="@string/addAlarm"
-				android:id="@+id/button1" android:layout_width="0px"
-				android:layout_weight="1" android:drawableTop="@drawable/plus"
-				android:onClick="addAlarm">
-			</Button>
-			<Button android:layout_width="0px" android:layout_height="wrap_content"
-				android:id="@+id/button2" android:layout_centerVertical="true"
-				android:layout_alignParentRight="true" android:layout_weight="1"
-				android:text="@string/settings" android:drawableTop="@drawable/preferences"
-				android:onClick="showPreferences">
-			</Button>
-
-		</LinearLayout>
-	</RelativeLayout>
-
+	</LinearLayout>
 </RelativeLayout>
